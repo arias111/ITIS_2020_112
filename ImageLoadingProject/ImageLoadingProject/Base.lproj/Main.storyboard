@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1LH-17-Cbb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1LH-17-Cbb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-gs-oMl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="261" id="mcK-wh-PsT" customClass="ImageCell" customModule="ImageLoadingProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="261"/>
@@ -39,7 +38,7 @@
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5EJ-hY-s8J">
                                                             <rect key="frame" x="0.0" y="28.5" width="374" height="210.5"/>
-                                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                            <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="5EJ-hY-s8J" secondAttribute="height" multiplier="16:9" id="tuc-vp-V85"/>
                                                             </constraints>
@@ -66,14 +65,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Z22-gs-oMl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BT7-DR-nRp"/>
                             <constraint firstItem="Z22-gs-oMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OW5-MP-xCi"/>
                             <constraint firstItem="Z22-gs-oMl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Saa-cp-G2V"/>
                             <constraint firstItem="Z22-gs-oMl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ocX-t0-Dco"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ezV-CK-yvY"/>
                 </viewController>
@@ -81,20 +80,31 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="93.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Large Image View Controller-->
         <scene sceneID="Wr0-Tm-aVR">
             <objects>
-                <viewController id="eTA-u5-l1M" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="largeImage" id="eTA-u5-l1M" customClass="LargeImageViewController" customModule="ImageLoadingProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t6d-wO-gnr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8df-gI-dNw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgU-Kw-aVY">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zgU-Kw-aVY" firstAttribute="top" secondItem="c0r-5w-qwb" secondAttribute="top" id="NsL-8X-8j9"/>
+                                    <constraint firstItem="c0r-5w-qwb" firstAttribute="trailing" secondItem="zgU-Kw-aVY" secondAttribute="trailing" id="PBX-XE-Eqr"/>
+                                    <constraint firstItem="c0r-5w-qwb" firstAttribute="bottom" secondItem="zgU-Kw-aVY" secondAttribute="bottom" id="R2H-Pd-m2X"/>
+                                    <constraint firstItem="zgU-Kw-aVY" firstAttribute="leading" secondItem="c0r-5w-qwb" secondAttribute="leading" id="UEj-39-oQi"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Syt-OZ-dRL"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="c0r-5w-qwb"/>
                             </scrollView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d0h-ra-sE0">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d0h-ra-sE0">
                                 <rect key="frame" x="132" y="446" width="150" height="4"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="OPL-QJ-wh0"/>
@@ -102,8 +112,7 @@
                                 </constraints>
                             </progressView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="cCS-mO-KWq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8df-gI-dNw" firstAttribute="bottom" secondItem="cCS-mO-KWq" secondAttribute="bottom" id="3Qu-Fl-Huq"/>
                             <constraint firstItem="d0h-ra-sE0" firstAttribute="centerX" secondItem="t6d-wO-gnr" secondAttribute="centerX" id="B94-d8-MdM"/>
@@ -112,7 +121,13 @@
                             <constraint firstItem="8df-gI-dNw" firstAttribute="leading" secondItem="cCS-mO-KWq" secondAttribute="leading" id="XnK-W5-UJF"/>
                             <constraint firstItem="d0h-ra-sE0" firstAttribute="centerY" secondItem="t6d-wO-gnr" secondAttribute="centerY" id="zJF-rT-SE7"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="cCS-mO-KWq"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="zgU-Kw-aVY" id="eww-PC-lTa"/>
+                        <outlet property="progressView" destination="d0h-ra-sE0" id="Lbd-1X-9zE"/>
+                        <outlet property="scrollView" destination="8df-gI-dNw" id="wSC-6h-Fir"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UCO-s5-MPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,12 +152,4 @@
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

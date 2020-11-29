@@ -32,24 +32,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+       return rows.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ImageCell else {
             fatalError("Could not dequeue cell")
         }
-
-        cell.title = "Guinea pig"
-        cell.imageUrl = URL(string: "https://news.clas.ufl.edu/files/2020/06/AdobeStock_345118478-copy-1440x961-1.jpg")
-        return cell
+        switch rows[indexPath.row] {
+        case .image(title: let title, urlString: let urlString):
+            cell.title = title
+            cell.imageUrl = URL(string: urlString)
+            return cell
+            
+        case .largeImage(title: let title, previewUrlString: let previewUrlString, urlString: _):
+            cell.title = title
+            cell.imageUrl = URL(string: previewUrlString)
+            return cell
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailsViewController = URLDetailsViewController()
-        detailsViewController.pageUrl = URL(string: "https://news.clas.ufl.edu/uncovering-the-origin-of-the-domesticated-guinea-pig/")
-        navigationController?.pushViewController(detailsViewController, animated: true)
+       switch rows[indexPath.row] {
+        case .image:
+            let detailsViewController = URLDetailsViewController()
+            detailsViewController.pageUrl = URL(string: "https://news.clas.ufl.edu/uncovering-the-origin-of-the-domesticated-guinea-pig/")
+            navigationController?.pushViewController(detailsViewController, animated: true)
+            
+        case .largeImage(title: _, previewUrlString: _, urlString: let urlString):
+            let LargeImageViewController = storyboard?.instantiateViewController(identifier: "largeImage") as! LargeImageViewController
+            navigationController?.pushViewController(LargeImageViewController, animated: true)
+        }
     }
 }
 
